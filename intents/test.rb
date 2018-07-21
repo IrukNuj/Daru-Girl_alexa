@@ -2,16 +2,14 @@ require 'twitter'
 require 'dotenv'
 
 intent "LaunchRequest" do
-
 end
 
 intent "GetNewIntent" do
-
   client = Twitter::REST::Client.new do |config|
-    config.consumer_key = ENV['CONSUMER_KEY']
-    config.consumer_secret = ENV['CONSUMER_SECRET']
-    config.access_token = ENV['ACCESS_TOKEN']
-    config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
+    config.consumer_key = ENV["CONSUMER_KEY"]
+    config.consumer_secret = ENV["CONSUMER_SECRET"]
+    config.access_token = ENV["ACCESS_TOKEN"]
+    config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
   end
 
   tweets = []
@@ -23,7 +21,6 @@ intent "GetNewIntent" do
     client.update(tweet_sample)
     tell("#{tweet_sample}と呟きました。")
   end
-
 end
 
 intent "Test" do
